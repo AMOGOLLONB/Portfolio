@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jaime Andrés Mogollón Bastidas - Ingeniero de Sistemas</title>
+
+    <!-- Google Fonts - Poppins -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- Modal de Bienvenida -->
+    <div id="welcomeModal" class="welcome-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>¡Bienvenido al Portafolio!</h2>
+          <p>Para comenzar, por favor ingresa tu nombre</p>
+        </div>
+        <div class="modal-body">
+          <form id="nameForm">
+            <div class="input-group">
+              <input
+                type="text"
+                id="userName"
+                placeholder="Digita tu nombre completo"
+                required
+                autocomplete="off"
+              />
+              <div class="input-feedback" id="nameFeedback"></div>
+            </div>
+
+            <!-- Sección de captura de foto -->
+            <div class="photo-section" id="photoSection" style="display: none">
+              <h3>📸 Ahora toma una foto para tu perfil</h3>
+              <div class="camera-container">
+                <video id="video" autoplay muted style="display: none"></video>
+                <canvas id="canvas" style="display: none"></canvas>
+                <div class="photo-preview" id="photoPreview">
+                  <div class="photo-placeholder">
+                    <span>👤</span>
+                    <p>Tu foto aparecerá aquí</p>
+                  </div>
+                </div>
+              </div>
+              <div class="camera-controls">
+                <button type="button" id="startCamera" class="btn-camera">
+                  📷 Activar Cámara
+                </button>
+                <button
+                  type="button"
+                  id="capturePhoto"
+                  class="btn-camera"
+                  style="display: none"
+                >
+                  📸 Tomar Foto
+                </button>
+                <button
+                  type="button"
+                  id="retakePhoto"
+                  class="btn-camera btn-secondary"
+                  style="display: none"
+                >
+                  🔄 Tomar Otra
+                </button>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-modal" id="submitBtn" disabled>
+              Comenzar
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navegación -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <h2>Jaime Mogollón</h2>
+        </div>
+        <ul class="nav-menu">
+          <li><a href="#inicio" class="nav-link">Inicio</a></li>
+          <li><a href="#experiencia" class="nav-link">Experiencia</a></li>
+          <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
+          <li><a href="#contacto" class="nav-link">Contacto</a></li>
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Sección de Presentación -->
+    <section id="inicio" class="hero">
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1>
+              Hola, soy
+              <span class="highlight">Jaime Andrés Mogollón Bastidas</span>
+            </h1>
+            <h2>Ingeniero de Sistemas</h2>
+            <p>
+              Apasionado por la tecnología y la resolución de problemas
+              complejos. Tengo experiencia en desarrollo de software y gestión
+              de sistemas informáticos. Me especializo en soluciones eficientes
+              y seguras.
+            </p>
+            <div class="hero-buttons">
+              <a href="#proyectos" class="btn btn-primary">Ver Proyectos</a>
+              <a href="#contacto" class="btn btn-secondary">Contactar</a>
+            </div>
+          </div>
+          <div class="hero-image">
+            <img
+              src="img/foto.png"
+              alt="Jaime Andrés Mogollón Bastidas"
+              class="profile-img"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de Experiencia -->
+    <section id="experiencia" class="experience">
+      <div class="container">
+        <h2 class="section-title">Experiencia Profesional</h2>
+
+        <!-- Experiencia Laboral -->
+        <div class="experience-grid">
+          <div class="experience-card">
+            <div class="experience-header">
+              <h3>Desarrollador Full Stack</h3>
+              <span class="company">TecnoCloud S.A.S</span>
+              <span class="period">2022 - 2024</span>
+            </div>
+            <p>
+              Desarrollo de aplicaciones web completas utilizando tecnologías
+              modernas. Implementación de soluciones escalables y mantenimiento
+              de sistemas existentes.
+            </p>
+          </div>
+
+          <div class="experience-card">
+            <div class="experience-header">
+              <h3>Analista de Sistemas</h3>
+              <span class="company">InnovaTech</span>
+              <span class="period">2020 - 2022</span>
+            </div>
+            <p>
+              Análisis y diseño de sistemas informáticos. Evaluación de
+              requerimientos técnicos y propuesta de soluciones tecnológicas
+              eficientes.
+            </p>
+          </div>
+
+          <div class="experience-card">
+            <div class="experience-header">
+              <h3>Monitor de Programación</h3>
+              <span class="company">Universidad Central</span>
+              <span class="period">2018 - 2019</span>
+            </div>
+            <p>
+              Apoyo académico en cursos de programación. Asistencia a
+              estudiantes en el desarrollo de proyectos y resolución de
+              problemas técnicos.
+            </p>
+          </div>
+        </div>
+
+        <!-- Habilidades Técnicas -->
+        <div class="skills-section">
+          <h3 class="skills-title">Habilidades Técnicas</h3>
+          <div class="skills-grid">
+            <div class="skill-item">
+              <span class="skill-name">JavaScript (ES6+)</span>
+              <div class="skill-bar">
+                <div class="skill-progress" data-width="90%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Python</span>
+              <div class="skill-bar">
+                <div class="skill-progress" data-width="85%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">HTML5 / CSS3</span>
+              <div class="skill-bar">
+                <div class="skill-progress" data-width="95%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">MySQL y PostgreSQL</span>
+              <div class="skill-bar">
+                <div class="skill-progress" data-width="80%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Git & GitHub</span>
+              <div class="skill-bar">
+                <div class="skill-progress" data-width="88%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Desarrollo de APIs</span>
+              <div class="skill-bar">
+                <div class="skill-progress" data-width="82%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Seguridad Informática</span>
+              <div class="skill-bar">
+                <div class="skill-progress" data-width="75%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de Proyectos -->
+    <section id="proyectos" class="projects">
+      <div class="container">
+        <h2 class="section-title">Proyectos Destacados</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-image">
+              <img src="img/proyecto1.jpg" alt="Sistema de Inventario Web" />
+            </div>
+            <div class="project-content">
+              <h3>Sistema de Inventario Web</h3>
+              <p>
+                Plataforma web completa para gestión de inventarios con
+                funcionalidades de control de stock, reportes automáticos y
+                dashboard interactivo.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">MySQL</span>
+              </div>
+              <a href="#" class="btn btn-primary">Ver más</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-image">
+              <img src="img/proyecto2.jpg" alt="App de Tareas Colaborativas" />
+            </div>
+            <div class="project-content">
+              <h3>App de Tareas Colaborativas</h3>
+              <p>
+                Aplicación móvil y web para gestión de tareas en equipo con
+                funciones de asignación, seguimiento y notificaciones en tiempo
+                real.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">PostgreSQL</span>
+              </div>
+              <a href="#" class="btn btn-primary">Ver más</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-image">
+              <img src="img/proyecto3.jpg" alt="Plataforma Educativa Virtual" />
+            </div>
+            <div class="project-content">
+              <h3>Plataforma Educativa Virtual</h3>
+              <p>
+                Sistema de aprendizaje en línea con videoconferencias, material
+                interactivo y seguimiento del progreso académico de los
+                estudiantes.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Vue.js</span>
+                <span class="tech-tag">Django</span>
+                <span class="tech-tag">MongoDB</span>
+              </div>
+              <a href="#" class="btn btn-primary">Ver más</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section id="contacto" class="contact">
+      <div class="container">
+        <h2 class="section-title">Contacto</h2>
+        <div class="contact-content">
+          <div class="contact-info">
+            <h3>¡Trabajemos juntos!</h3>
+            <p>
+              Estoy disponible para nuevos proyectos y oportunidades. No dudes
+              en contactarme para discutir cómo puedo ayudarte con tu próximo
+              proyecto tecnológico.
+            </p>
+
+            <div class="social-links">
+              <a
+                href="https://linkedin.com/in/jaimemogollon"
+                target="_blank"
+                class="social-link"
+              >
+                <span class="social-icon">💼</span>
+                LinkedIn
+              </a>
+              <a
+                href="https://github.com/jaimemogollon"
+                target="_blank"
+                class="social-link"
+              >
+                <span class="social-icon">🐙</span>
+                GitHub
+              </a>
+              <a
+                href="https://twitter.com/jaime_codes"
+                target="_blank"
+                class="social-link"
+              >
+                <span class="social-icon">🐦</span>
+                Twitter
+              </a>
+            </div>
+          </div>
+
+          <form class="contact-form" id="contactForm">
+            <div class="form-group">
+              <label for="name">Nombre</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Correo Electrónico</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="message">Mensaje</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">
+              Enviar Mensaje
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p>
+          &copy; 2025 Jaime Andrés Mogollón Bastidas – Todos los derechos
+          reservados
+        </p>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+  </body>
+</html>

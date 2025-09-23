@@ -1,0 +1,14 @@
+<!-- Este es un placeholder SVG que simula una imagen de avatar profesional -->
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0066ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff6600;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <circle cx="200" cy="200" r="200" fill="url(#bg)"/>
+  <circle cx="200" cy="160" r="60" fill="white" opacity="0.9"/>
+  <ellipse cx="200" cy="280" rx="100" ry="60" fill="white" opacity="0.9"/>
+  <text x="200" y="350" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="24" font-weight="bold">JAIME</text>
+  <text x="200" y="375" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16">INGENIERO DE SISTEMAS</text>
+</svg>
