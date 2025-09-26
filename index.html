@@ -1,98 +1,138 @@
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Andrés Mogollón | Ingeniero de Sistemas</title>
+/* Estilos globales */
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #f0f4fd, #d9e8ff);
+  color: #333;
+}
 
-    <!-- Google Fonts – Poppins -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+.container {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+}
 
-    <!-- CSS personalizado -->
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <!-- Aquí va el contenido previo que tenías: bienvenida, navegación, etc. -->
+/* Contacto / formulario más dinámico */
+.contact {
+  padding: 60px 0;
+  position: relative;
+}
 
-    <!-- Sección de Contacto con formulario -->
-    <section id="contacto" class="contact">
-      <div class="container">
-        <h2 class="section-title">Contacto</h2>
-        <div class="contact-content">
-          <div class="contact-info">
-            <h3>¡Trabajemos juntos!</h3>
-            <p>
-              Estoy abierto a nuevos desafíos profesionales y colaboraciones
-              en el ámbito de la inteligencia artificial, automatización de
-              procesos con n8n y gestión avanzada de datos SQL. Si quieres
-              llevar tu proyecto al siguiente nivel, no dudes en contactarme.
-            </p>
+/* Para darle un toque animado al fondo del formulario */
+.form-wrapper {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  max-width: 520px;
+  margin: 0 auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-            <div class="social-links">
-              <a
-                href="https://linkedin.com/in/andresmogollon"
-                target="_blank"
-                class="social-link"
-              >
-                <span class="social-icon">💼</span>
-                LinkedIn
-              </a>
-              <a
-                href="https://github.com/andresmogollon"
-                target="_blank"
-                class="social-link"
-              >
-                <span class="social-icon">🐙</span>
-                GitHub
-              </a>
-              <a
-                href="https://twitter.com/andres_mogollon"
-                target="_blank"
-                class="social-link"
-              >
-                <span class="social-icon">🐦</span>
-                Twitter
-              </a>
-            </div>
-          </div>
+.form-wrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+}
 
-          <div class="form-wrapper">
-            <!-- Formulario apuntando a Formspree -->
-            <form
-              id="contactForm"
-              action="https://formspree.io/f/xqayawzz"
-              method="POST"
-            >
-              <div class="form-group">
-                <label for="name">Nombre</label>
-                <input type="text" id="name" name="name" required />
-              </div>
-              <div class="form-group">
-                <label for="email">Correo Electrónico</label>
-                <input type="email" id="email" name="email" required />
-              </div>
-              <div class="form-group">
-                <label for="message">Mensaje</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
-              <div id="formMessage" class="form-message"></div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
+.section-title {
+  text-align: center;
+  font-size: 2.4em;
+  margin-bottom: 50px;
+  color: #013a63;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 
-    <footer class="footer">
-      <div class="container">
-        <p>&copy; 2025 Andrés Mogollón – Todos los derechos reservados</p>
-      </div>
-    </footer>
+/* Cada campo del formulario */
+.form-group {
+  margin-bottom: 25px;
+  position: relative;
+}
 
-    <!-- Scripts -->
-    <script src="script.js"></script>
-  </body>
-</html>
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #013a63;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+  outline: none;
+}
+
+/* Animación de borde al pasar el mouse */
+.form-group input:hover,
+.form-group textarea:hover {
+  border-color: #7aa7ff;
+}
+
+/* Botón más llamativo */
+.btn-primary {
+  display: inline-block;
+  background: linear-gradient(90deg, #0066ff, #0099ff);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 6px 18px rgba(0, 102, 255, 0.2);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(90deg, #0055dd, #0088dd);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 102, 255, 0.25);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(0, 102, 255, 0.15);
+}
+
+/* Mensaje de estado */
+.form-message {
+  margin-top: 22px;
+  font-size: 1rem;
+  text-align: center;
+  transition: opacity 0.4s ease;
+}
+
+/* Para animar la aparición del mensaje */
+.form-message.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.form-message.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Estilo responsivo */
+@media (max-width: 600px) {
+  .form-wrapper {
+    padding: 30px;
+    margin: 0 20px;
+  }
+  .section-title {
+    font-size: 2em;
+    margin-bottom: 40px;
+  }
+}
