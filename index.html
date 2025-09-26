@@ -1,138 +1,374 @@
-/* Estilos globales */
-body {
-  font-family: "Poppins", sans-serif;
-  margin: 0;
-  padding: 0;
-  background: linear-gradient(135deg, #f0f4fd, #d9e8ff);
-  color: #333;
-}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Andrés Mogollón | Ingeniero de Sistemas</title>
 
-.container {
-  width: 90%;
-  max-width: 900px;
-  margin: 0 auto;
-}
+    <!-- Google Fonts – Poppins -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-/* Contacto / formulario más dinámico */
-.contact {
-  padding: 60px 0;
-  position: relative;
-}
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- Mensaje de Bienvenida -->
+    <div id="welcome-message" class="welcome-container">
+      <!-- tu contenido original... -->
+      <div class="welcome-text">
+        <span class="welcome-letter">B</span>
+        <span class="welcome-letter">i</span>
+        <span class="welcome-letter">e</span>
+        <span class="welcome-letter">n</span>
+        <span class="welcome-letter">v</span>
+        <span class="welcome-letter">e</span>
+        <span class="welcome-letter">n</span>
+        <span class="welcome-letter">i</span>
+        <span class="welcome-letter">d</span>
+        <span class="welcome-letter">o</span>
+        <span class="welcome-letter">&nbsp;</span>
+        <span class="welcome-letter">a</span>
+        <span class="welcome-letter">&nbsp;</span>
+        <span class="welcome-letter">m</span>
+        <span class="welcome-letter">i</span>
+        <span class="welcome-letter">&nbsp;</span>
+        <span class="welcome-letter">P</span>
+        <span class="welcome-letter">á</span>
+        <span class="welcome-letter">g</span>
+        <span class="welcome-letter">i</span>
+        <span class="welcome-letter">n</span>
+        <span class="welcome-letter">a</span>
+      </div>
+    </div>
 
-/* Para darle un toque animado al fondo del formulario */
-.form-wrapper {
-  background: #ffffff;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  max-width: 520px;
-  margin: 0 auto;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    <!-- Navegación -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <h2>Andrés Mogollón</h2>
+        </div>
+        <ul class="nav-menu">
+          <li><a href="#inicio" class="nav-link">Inicio</a></li>
+          <li><a href="#experiencia" class="nav-link">Experiencia</a></li>
+          <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
+          <li><a href="#contacto" class="nav-link">Contacto</a></li>
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </nav>
 
-.form-wrapper:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
-}
+    <!-- Sección de Presentación -->
+    <section id="inicio" class="hero">
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1>
+              Hola, soy
+              <span class="highlight">Andrés Mogollón</span>
+            </h1>
+            <h2>Ingeniero de Sistemas | Especialista en IA, n8n y SQL</h2>
+            <p>
+              Soy un ingeniero de sistemas con amplia experiencia en la
+              implementación de soluciones innovadoras que integran inteligencia
+              artificial, automatización de flujos de trabajo con n8n y
+              gestión avanzada de bases de datos SQL. Mi pasión es transformar
+              procesos empresariales complejos en sistemas eficientes y
+              escalables que generen valor tangible para las organizaciones.
+            </p>
+            <div class="hero-buttons">
+              <a href="#proyectos" class="btn btn-primary">Ver Proyectos</a>
+              <a href="#contacto" class="btn btn-secondary">Contactar</a>
+            </div>
+          </div>
+          <div class="hero-image">
+            <img
+              src="img/avatar.jpg"
+              alt="Andrés Mogollón - Ingeniero de Sistemas"
+              class="profile-img"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
 
-.section-title {
-  text-align: center;
-  font-size: 2.4em;
-  margin-bottom: 50px;
-  color: #013a63;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
+    <!-- Sección de Experiencia -->
+    <section id="experiencia" class="experience">
+      <div class="container">
+        <h2 class="section-title">Experiencia Profesional</h2>
 
-/* Cada campo del formulario */
-.form-group {
-  margin-bottom: 25px;
-  position: relative;
-}
+        <!-- Experiencia Laboral -->
+        <div class="experience-grid">
+          <div class="experience-card">
+            <div class="experience-header">
+              <h3>Ingeniero de Sistemas Senior</h3>
+              <span class="company">Google</span>
+              <span class="period">2021 - Presente</span>
+            </div>
+            <p>
+              Lideré proyectos estratégicos de integración de inteligencia artificial en
+              productos clave, optimizando procesos mediante flujos automatizados con n8n,
+              y diseñando bases de datos SQL altamente eficientes para manejo masivo de datos.
+              Implementé soluciones que aumentaron la productividad en un 40%.
+            </p>
+          </div>
 
-.form-group label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 500;
-  color: #013a63;
-}
+          <div class="experience-card">
+            <div class="experience-header">
+              <h3>Especialista en Automatización y AI</h3>
+              <span class="company">Microsoft</span>
+              <span class="period">2018 - 2021</span>
+            </div>
+            <p>
+              Desarrollé sistemas de automatización avanzada usando n8n para la optimización
+              de procesos internos y clientes. Implementé modelos de machine learning
+              para mejorar la toma de decisiones y la experiencia del usuario.
+              Gestioné bases de datos SQL para análisis de grandes volúmenes de información.
+            </p>
+          </div>
 
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 14px;
-  border: 1px solid #cbd5e0;
-  border-radius: 8px;
-  font-size: 1rem;
-  box-sizing: border-box;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
+          <div class="experience-card">
+            <div class="experience-header">
+              <h3>Ingeniero de Software</h3>
+              <span class="company">Amazon</span>
+              <span class="period">2015 - 2018</span>
+            </div>
+            <p>
+              Contribuí al desarrollo de sistemas distribuidos para la plataforma AWS,
+              integrando herramientas de automatización y bases de datos SQL. Participé
+              en la creación de soluciones escalables para mejorar la eficiencia operativa.
+            </p>
+          </div>
+        </div>
 
-.form-group input:focus,
-.form-group textarea:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
-  outline: none;
-}
+        <!-- Habilidades Técnicas -->
+        <div class="skills-section">
+          <h3 class="skills-title">Habilidades Destacadas</h3>
+          <div class="skills-grid">
+            <div class="skill-item">
+              <span class="skill-name">Inteligencia Artificial / Machine Learning</span>
+              <div class="skill-bar">
+                <div class="skill-progress" data-width="95%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Automatización con n8n</span>
+              <div class="skill-bar">
+                <div class="skill-progress" data-width="92%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">SQL / Gestión de Bases de Datos</span>
+              <div class="skill-bar">
+                <div class="skill-progress" data-width="90%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Python / Frameworks AI</span>
+              <div class="skill-bar">
+                <div class="skill-progress" data-width="88%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Cloud Computing (AWS, Azure)</span>
+              <div class="skill-bar">
+                <div class="skill-progress" data-width="85%"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">DevOps / CI/CD</span>
+              <div class="skill-bar">
+                <div class="skill-progress" data-width="80%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-/* Animación de borde al pasar el mouse */
-.form-group input:hover,
-.form-group textarea:hover {
-  border-color: #7aa7ff;
-}
+    <!-- Sección de Proyectos -->
+    <section id="proyectos" class="projects">
+      <div class="container">
+        <h2 class="section-title">Proyectos Destacados</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-image">
+              <img
+                src="img/proyecto1.jpg"
+                alt="Automatización con n8n para e-commerce"
+              />
+            </div>
+            <div class="project-content">
+              <h3>Automatización de Flujos para e-Commerce</h3>
+              <p>
+                Desarrollo de un sistema automatizado con n8n que integra múltiples
+                plataformas de e-commerce, mejorando la eficiencia en la gestión
+                de pedidos y la experiencia del cliente en tiempo real.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">n8n</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">SQL Server</span>
+              </div>
+              <a href="#" class="btn btn-primary">Ver más</a>
+            </div>
+          </div>
 
-/* Botón más llamativo */
-.btn-primary {
-  display: inline-block;
-  background: linear-gradient(90deg, #0066ff, #0099ff);
-  color: white;
-  border: none;
-  padding: 14px 28px;
-  font-size: 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 6px 18px rgba(0, 102, 255, 0.2);
-}
+          <div class="project-card">
+            <div class="project-image">
+              <img src="img/proyecto2.jpg" alt="Modelo de IA para análisis predictivo" />
+            </div>
+            <div class="project-content">
+              <h3>Modelo de IA para Análisis Predictivo</h3>
+              <p>
+                Implementación de modelos de machine learning para predicción de
+                demanda y mantenimiento predictivo, que permitieron reducir costos
+                operativos en un 30%.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">TensorFlow</span>
+                <span class="tech-tag">SQL</span>
+              </div>
+              <a href="#" class="btn btn-primary">Ver más</a>
+            </div>
+          </div>
 
-.btn-primary:hover {
-  background: linear-gradient(90deg, #0055dd, #0088dd);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(0, 102, 255, 0.25);
-}
+          <div class="project-card">
+            <div class="project-image">
+              <img src="img/proyecto3.jpg" alt="Sistema de gestión de bases de datos" />
+            </div>
+            <div class="project-content">
+              <h3>Sistema Avanzado de Gestión de Bases de Datos</h3>
+              <p>
+                Diseño y desarrollo de un sistema robusto para la gestión de
+                bases de datos SQL, mejorando la seguridad y accesibilidad de
+                datos en tiempo real para grandes organizaciones.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">SQL</span>
+                <span class="tech-tag">PostgreSQL</span>
+                <span class="tech-tag">Cloud</span>
+              </div>
+              <a href="#" class="btn btn-primary">Ver más</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-.btn-primary:active {
-  transform: translateY(0);
-  box-shadow: 0 4px 12px rgba(0, 102, 255, 0.15);
-}
+    <!-- Sección de Contacto -->
+    <section id="contacto" class="contact">
+      <div class="container">
+        <h2 class="section-title">Contacto</h2>
+        <div class="contact-content">
+          <div class="contact-info">
+            <h3>¡Trabajemos juntos!</h3>
+            <p>
+              Estoy abierto a nuevos desafíos profesionales y colaboraciones
+              en el ámbito de la inteligencia artificial, automatización de
+              procesos con n8n y gestión avanzada de datos SQL. Si quieres
+              llevar tu proyecto al siguiente nivel, no dudes en contactarme.
+            </p>
 
-/* Mensaje de estado */
-.form-message {
-  margin-top: 22px;
-  font-size: 1rem;
-  text-align: center;
-  transition: opacity 0.4s ease;
-}
+            <div class="social-links">
+              <a
+                href="https://linkedin.com/in/andresmogollon"
+                target="_blank"
+                class="social-link"
+              >
+                <span class="social-icon">💼</span>
+                LinkedIn
+              </a>
+              <a
+                href="https://github.com/andresmogollon"
+                target="_blank"
+                class="social-link"
+              >
+                <span class="social-icon">🐙</span>
+                GitHub
+              </a>
+              <a
+                href="https://twitter.com/andres_mogollon"
+                target="_blank"
+                class="social-link"
+              >
+                <span class="social-icon">🐦</span>
+                Twitter
+              </a>
+            </div>
+          </div>
 
-/* Para animar la aparición del mensaje */
-.form-message.hidden {
-  opacity: 0;
-  visibility: hidden;
-}
+          <div class="form-wrapper">
+            <form class="contact-form" id="contactForm" action="https://formspree.io/f/xqayawzz" method="POST">
+              <div class="form-group">
+                <label for="name">Nombre</label>
+                <input type="text" id="name" name="name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Correo Electrónico</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+              <div class="form-group">
+                <label for="message">Mensaje</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+              <div id="formMessage" class="form-message hidden"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
 
-.form-message.visible {
-  opacity: 1;
-  visibility: visible;
-}
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2025 Andrés Mogollón – Todos los derechos reservados</p>
+      </div>
+    </footer>
 
-/* Estilo responsivo */
-@media (max-width: 600px) {
-  .form-wrapper {
-    padding: 30px;
-    margin: 0 20px;
-  }
-  .section-title {
-    font-size: 2em;
-    margin-bottom: 40px;
-  }
-}
+    <!-- Widget de Chat (el “agente”) -->
+    <script>
+      (function () {
+        if (!window.chatbase || window.chatbase("getState") !== "initialized") {
+          window.chatbase = (...arguments) => {
+            if (!window.chatbase.q) {
+              window.chatbase.q = [];
+            }
+            window.chatbase.q.push(arguments);
+          };
+          window.chatbase = new Proxy(window.chatbase, {
+            get(target, prop) {
+              if (prop === "q") {
+                return target.q;
+              }
+              return (...args) => target(prop, ...args);
+            },
+          });
+        }
+        const onLoad = function () {
+          const script = document.createElement("script");
+          script.src = "https://www.chatbase.co/embed.min.js";
+          script.id = "DlJsSU59gDbb88Y5HLia_";
+          script.domain = "www.chatbase.co";
+          document.body.appendChild(script);
+        };
+        if (document.readyState === "complete") {
+          onLoad();
+        } else {
+          window.addEventListener("load", onLoad);
+        }
+      })();
+    </script>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+  </body>
+</html>
