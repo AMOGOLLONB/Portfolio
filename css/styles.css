@@ -1,138 +1,65 @@
-/* Estilos globales */
+:root {
+  --bg-light: #f7f8fa;
+  --primary: #4f46e5;
+  --secondary: #06b6d4;
+  --text-dark: #111827;
+  --text-gray: #6b7280;
+  --footer-bg: #1f2937;
+}
+
 body {
   font-family: "Poppins", sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #f0f4fd, #d9e8ff);
-  color: #333;
+  line-height: 1.6;
 }
 
-.container {
-  width: 90%;
-  max-width: 900px;
-  margin: 0 auto;
+.navbar {
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-/* Contacto / formulario más dinámico */
-.contact {
-  padding: 60px 0;
-  position: relative;
-}
-
-/* Para darle un toque animado al fondo del formulario */
-.form-wrapper {
-  background: #ffffff;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  max-width: 520px;
-  margin: 0 auto;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.form-wrapper:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
-}
-
-.section-title {
-  text-align: center;
-  font-size: 2.4em;
-  margin-bottom: 50px;
-  color: #013a63;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-/* Cada campo del formulario */
-.form-group {
-  margin-bottom: 25px;
-  position: relative;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 8px;
+.nav-link {
+  color: var(--text-dark);
   font-weight: 500;
-  color: #013a63;
+  transition: color 0.3s ease;
 }
 
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 14px;
-  border: 1px solid #cbd5e0;
-  border-radius: 8px;
-  font-size: 1rem;
-  box-sizing: border-box;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+.nav-link:hover {
+  color: var(--primary);
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
-  outline: none;
-}
-
-/* Animación de borde al pasar el mouse */
-.form-group input:hover,
-.form-group textarea:hover {
-  border-color: #7aa7ff;
-}
-
-/* Botón más llamativo */
 .btn-primary {
-  display: inline-block;
-  background: linear-gradient(90deg, #0066ff, #0099ff);
+  background-color: var(--primary);
   color: white;
   border: none;
-  padding: 14px 28px;
-  font-size: 1rem;
+  padding: 10px 20px;
   border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 6px 18px rgba(0, 102, 255, 0.2);
+  transition: background-color 0.3s ease;
 }
 
 .btn-primary:hover {
-  background: linear-gradient(90deg, #0055dd, #0088dd);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(0, 102, 255, 0.25);
+  background-color: #4338ca;
 }
 
-.btn-primary:active {
-  transform: translateY(0);
-  box-shadow: 0 4px 12px rgba(0, 102, 255, 0.15);
+.btn-secondary {
+  background-color: var(--secondary);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
 }
 
-/* Mensaje de estado */
-.form-message {
-  margin-top: 22px;
-  font-size: 1rem;
+.btn-secondary:hover {
+  background-color: #0891b2;
+}
+
+.footer {
+  background-color: var(--footer-bg);
+  color: white;
   text-align: center;
-  transition: opacity 0.4s ease;
-}
-
-/* Para animar la aparición del mensaje */
-.form-message.hidden {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.form-message.visible {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* Estilo responsivo */
-@media (max-width: 600px) {
-  .form-wrapper {
-    padding: 30px;
-    margin: 0 20px;
-  }
-  .section-title {
-    font-size: 2em;
-    margin-bottom: 40px;
-  }
+  padding: 20px 0;
 }
