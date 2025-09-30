@@ -1,0 +1,24 @@
+# Sistema de Reconocimiento Facial - Dependencias
+# Instalar con: pip install -r requirements.txt
+
+# Framework web
+Flask==2.3.3
+Werkzeug==2.3.7
+
+# Procesamiento de imágenes y reconocimiento facial
+opencv-python==4.8.1.78
+face-recognition==1.3.0
+Pillow==10.0.1
+numpy==1.24.3
+
+# Manipulación de datos y exportación
+pandas==2.0.3
+openpyxl==3.1.2
+
+# Utilidades adicionales
+python-dateutil==2.8.2
+requests==2.31.0
+
+# Para desarrollo (opcional)
+flask-cors==4.0.0  # Si necesitas CORS
+gunicorn==21.2.0   # Para producción

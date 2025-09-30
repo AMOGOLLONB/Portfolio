@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 Sistema de Reconocimiento Facial - Andrés Mogollón</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-camera"></i> Sistema de Reconocimiento Facial</h1>
+                <p>Identificación en tiempo real • Coordenadas • Exportación a Excel</p>
+                <div class="status-indicator">
+                    <span id="statusText">Iniciando...</span>
+                    <div class="status-dot" id="statusDot"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Controles principales -->
+        <div class="controls-section">
+            <div class="control-buttons">
+                <button id="startBtn" class="btn btn-primary">
+                    <i class="fas fa-play"></i> Iniciar Detección
+                </button>
+                <button id="stopBtn" class="btn btn-secondary" disabled>
+                    <i class="fas fa-stop"></i> Detener
+                </button>
+                <button id="exportBtn" class="btn btn-success">
+                    <i class="fas fa-file-excel"></i> Exportar Excel
+                </button>
+                <button id="clearBtn" class="btn btn-warning">
+                    <i class="fas fa-trash"></i> Limpiar Historial
+                </button>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <i class="fas fa-users"></i>
+                    <span>Rostros Conocidos: <strong id="knownFaces">0</strong></span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-eye"></i>
+                    <span>Detecciones: <strong id="totalDetections">0</strong></span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Última: <strong id="lastDetection">N/A</strong></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Área de cámara -->
+        <div class="camera-section">
+            <div class="camera-container">
+                <video id="video" autoplay muted></video>
+                <canvas id="canvas" style="display: none;"></canvas>
+                <div class="camera-overlay">
+                    <div class="detection-box" id="detectionBox" style="display: none;"></div>
+                    <div class="face-info" id="faceInfo" style="display: none;"></div>
+                </div>
+            </div>
+            
+            <div class="camera-controls">
+                <div class="camera-info">
+                    <i class="fas fa-video"></i>
+                    <span id="cameraStatus">Cámara no iniciada</span>
+                </div>
+                <div class="detection-info">
+                    <i class="fas fa-search"></i>
+                    <span id="detectionStatus">Detección inactiva</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resultados en tiempo real -->
+        <div class="results-section">
+            <h3><i class="fas fa-list"></i> Resultados de Detección</h3>
+            <div class="results-container">
+                <div id="detectionResults" class="results-list">
+                    <div class="no-results">
+                        <i class="fas fa-info-circle"></i>
+                        <p>Inicia la detección para ver resultados en tiempo real</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Historial de detecciones -->
+        <div class="history-section">
+            <div class="history-header">
+                <h3><i class="fas fa-history"></i> Historial de Detecciones</h3>
+                <button id="refreshHistory" class="btn btn-outline">
+                    <i class="fas fa-sync"></i> Actualizar
+                </button>
+            </div>
+            <div class="history-container">
+                <div id="historyList" class="history-list">
+                    <div class="no-history">
+                        <i class="fas fa-clock"></i>
+                        <p>No hay detecciones registradas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para agregar rostro -->
+        <div id="addFaceModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3><i class="fas fa-user-plus"></i> Agregar Nuevo Rostro</h3>
+                    <button class="close-btn" onclick="closeAddFaceModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="personName">Nombre de la persona:</label>
+                        <input type="text" id="personName" placeholder="Ej: Juan Pérez" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Captura actual:</label>
+                        <div class="capture-preview">
+                            <canvas id="captureCanvas"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" onclick="closeAddFaceModal()">Cancelar</button>
+                    <button class="btn btn-primary" onclick="addFace()">Agregar Rostro</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notificaciones -->
+        <div id="notifications" class="notifications"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/camera.js') }}"></script>
+    <script>
+        // Variables globales
+        let video, canvas, ctx;
+        let isDetecting = false;
+        let detectionInterval;
+        let knownFaces = 0;
+        let totalDetections = 0;
+
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function() {
+            video = document.getElementById('video');
+            canvas = document.getElementById('canvas');
+            ctx = canvas.getContext('2d');
+            
+            // Cargar estado inicial
+            loadSystemStatus();
+            loadHistory();
+            
+            // Event listeners
+            document.getElementById('startBtn').addEventListener('click', startDetection);
+            document.getElementById('stopBtn').addEventListener('click', stopDetection);
+            document.getElementById('exportBtn').addEventListener('click', exportToExcel);
+            document.getElementById('clearBtn').addEventListener('click', clearHistory);
+            document.getElementById('refreshHistory').addEventListener('click', loadHistory);
+        });
+
+        // Cargar estado del sistema
+        async function loadSystemStatus() {
+            try {
+                const response = await fetch('/status');
+                const data = await response.json();
+                
+                document.getElementById('knownFaces').textContent = data.known_faces;
+                document.getElementById('totalDetections').textContent = data.total_detections;
+                document.getElementById('lastDetection').textContent = data.last_detection;
+                
+                knownFaces = data.known_faces;
+                totalDetections = data.total_detections;
+                
+                updateStatus('Sistema activo', 'success');
+            } catch (error) {
+                console.error('Error cargando estado:', error);
+                updateStatus('Error de conexión', 'error');
+            }
+        }
+
+        // Iniciar detección
+        async function startDetection() {
+            try {
+                // Solicitar acceso a la cámara
+                const stream = await navigator.mediaDevices.getUserMedia({ 
+                    video: { 
+                        width: 640, 
+                        height: 480,
+                        facingMode: 'user'
+                    } 
+                });
+                
+                video.srcObject = stream;
+                video.play();
+                
+                // Configurar canvas
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                
+                // Actualizar UI
+                document.getElementById('startBtn').disabled = true;
+                document.getElementById('stopBtn').disabled = false;
+                document.getElementById('cameraStatus').textContent = 'Cámara activa';
+                document.getElementById('detectionStatus').textContent = 'Detección activa';
+                
+                isDetecting = true;
+                
+                // Iniciar detección cada 2 segundos
+                detectionInterval = setInterval(processFrame, 2000);
+                
+                updateStatus('Detección iniciada', 'success');
+                
+            } catch (error) {
+                console.error('Error accediendo a la cámara:', error);
+                updateStatus('Error accediendo a la cámara', 'error');
+                showNotification('No se pudo acceder a la cámara. Verifica los permisos.', 'error');
+            }
+        }
+
+        // Detener detección
+        function stopDetection() {
+            if (video.srcObject) {
+                video.srcObject.getTracks().forEach(track => track.stop());
+                video.srcObject = null;
+            }
+            
+            clearInterval(detectionInterval);
+            isDetecting = false;
+            
+            // Actualizar UI
+            document.getElementById('startBtn').disabled = false;
+            document.getElementById('stopBtn').disabled = true;
+            document.getElementById('cameraStatus').textContent = 'Cámara detenida';
+            document.getElementById('detectionStatus').textContent = 'Detección inactiva';
+            
+            // Limpiar overlay
+            document.getElementById('detectionBox').style.display = 'none';
+            document.getElementById('faceInfo').style.display = 'none';
+            
+            updateStatus('Detección detenida', 'warning');
+        }
+
+        // Procesar frame de video
+        async function processFrame() {
+            if (!isDetecting || video.readyState !== video.HAVE_ENOUGH_DATA) return;
+            
+            try {
+                // Capturar frame
+                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                const imageData = canvas.toDataURL('image/jpeg', 0.8);
+                
+                // Enviar para detección
+                const response = await fetch('/detect_face', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ image: imageData })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    displayResults(result.results);
+                    updateDetectionCount(result.total_faces);
+                } else {
+                    console.error('Error en detección:', result.error);
+                }
+                
+            } catch (error) {
+                console.error('Error procesando frame:', error);
+            }
+        }
+
+        // Mostrar resultados
+        function displayResults(results) {
+            const resultsContainer = document.getElementById('detectionResults');
+            
+            if (results.length === 0) {
+                resultsContainer.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-search"></i>
+                        <p>No se detectaron rostros</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            let html = '';
+            results.forEach(result => {
+                const confidencePercent = Math.round(result.confidence * 100);
+                const confidenceClass = result.confidence > 0.7 ? 'high' : result.confidence > 0.4 ? 'medium' : 'low';
+                
+                html += `
+                    <div class="result-item">
+                        <div class="result-header">
+                            <span class="result-name ${result.name === 'Desconocido' ? 'unknown' : 'known'}">
+                                ${result.name}
+                            </span>
+                            <span class="result-confidence ${confidenceClass}">
+                                ${confidencePercent}%
+                            </span>
+                        </div>
+                        <div class="result-details">
+                            <div class="result-coords">
+                                <i class="fas fa-crosshairs"></i>
+                                X: ${result.coordinates.x}, Y: ${result.coordinates.y}
+                            </div>
+                            <div class="result-time">
+                                <i class="fas fa-clock"></i>
+                                ${result.timestamp}
+                            </div>
+                        </div>
+                        ${result.name === 'Desconocido' ? `
+                            <button class="btn btn-sm btn-outline" onclick="showAddFaceModal('${result.timestamp}')">
+                                <i class="fas fa-user-plus"></i> Agregar
+                            </button>
+                        ` : ''}
+                    </div>
+                `;
+            });
+            
+            resultsContainer.innerHTML = html;
+        }
+
+        // Actualizar contador de detecciones
+        function updateDetectionCount(count) {
+            totalDetections += count;
+            document.getElementById('totalDetections').textContent = totalDetections;
+            document.getElementById('lastDetection').textContent = new Date().toLocaleTimeString();
+        }
+
+        // Exportar a Excel
+        async function exportToExcel() {
+            try {
+                const response = await fetch('/export_excel');
+                const result = await response.json();
+                
+                if (result.success) {
+                    showNotification(`Reporte exportado: ${result.filename}`, 'success');
+                    // Descargar archivo
+                    window.open(`/download_excel/${result.filename}`, '_blank');
+                } else {
+                    showNotification(`Error: ${result.error}`, 'error');
+                }
+            } catch (error) {
+                console.error('Error exportando:', error);
+                showNotification('Error al exportar reporte', 'error');
+            }
+        }
+
+        // Limpiar historial
+        async function clearHistory() {
+            if (confirm('¿Estás seguro de que quieres limpiar todo el historial?')) {
+                try {
+                    const response = await fetch('/clear_history', { method: 'POST' });
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        totalDetections = 0;
+                        document.getElementById('totalDetections').textContent = '0';
+                        document.getElementById('lastDetection').textContent = 'N/A';
+                        loadHistory();
+                        showNotification('Historial limpiado', 'success');
+                    }
+                } catch (error) {
+                    console.error('Error limpiando historial:', error);
+                    showNotification('Error al limpiar historial', 'error');
+                }
+            }
+        }
+
+        // Cargar historial
+        async function loadHistory() {
+            try {
+                const response = await fetch('/get_history');
+                const result = await response.json();
+                
+                if (result.success) {
+                    displayHistory(result.history);
+                }
+            } catch (error) {
+                console.error('Error cargando historial:', error);
+            }
+        }
+
+        // Mostrar historial
+        function displayHistory(history) {
+            const historyContainer = document.getElementById('historyList');
+            
+            if (history.length === 0) {
+                historyContainer.innerHTML = `
+                    <div class="no-history">
+                        <i class="fas fa-clock"></i>
+                        <p>No hay detecciones registradas</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            let html = '';
+            history.slice(-10).reverse().forEach(item => {
+                const confidencePercent = Math.round(item.confidence * 100);
+                const confidenceClass = item.confidence > 0.7 ? 'high' : item.confidence > 0.4 ? 'medium' : 'low';
+                
+                html += `
+                    <div class="history-item">
+                        <div class="history-info">
+                            <span class="history-name ${item.name === 'Desconocido' ? 'unknown' : 'known'}">
+                                ${item.name}
+                            </span>
+                            <span class="history-time">${item.timestamp}</span>
+                        </div>
+                        <div class="history-details">
+                            <span class="history-coords">(${item.coordinates.x}, ${item.coordinates.y})</span>
+                            <span class="history-confidence ${confidenceClass}">${confidencePercent}%</span>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            historyContainer.innerHTML = html;
+        }
+
+        // Mostrar modal para agregar rostro
+        function showAddFaceModal(timestamp) {
+            // Capturar frame actual
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            const captureCanvas = document.getElementById('captureCanvas');
+            const captureCtx = captureCanvas.getContext('2d');
+            captureCanvas.width = 200;
+            captureCanvas.height = 150;
+            captureCtx.drawImage(video, 0, 0, 200, 150);
+            
+            document.getElementById('addFaceModal').style.display = 'block';
+        }
+
+        // Cerrar modal
+        function closeAddFaceModal() {
+            document.getElementById('addFaceModal').style.display = 'none';
+            document.getElementById('personName').value = '';
+        }
+
+        // Agregar rostro
+        async function addFace() {
+            const name = document.getElementById('personName').value.trim();
+            
+            if (!name) {
+                showNotification('Por favor ingresa un nombre', 'error');
+                return;
+            }
+            
+            try {
+                const imageData = canvas.toDataURL('image/jpeg', 0.8);
+                
+                const response = await fetch('/add_face', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ name: name, image: imageData })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showNotification(`Rostro de ${name} agregado exitosamente`, 'success');
+                    closeAddFaceModal();
+                    loadSystemStatus();
+                } else {
+                    showNotification(`Error: ${result.error}`, 'error');
+                }
+            } catch (error) {
+                console.error('Error agregando rostro:', error);
+                showNotification('Error al agregar rostro', 'error');
+            }
+        }
+
+        // Actualizar estado
+        function updateStatus(message, type) {
+            const statusText = document.getElementById('statusText');
+            const statusDot = document.getElementById('statusDot');
+            
+            statusText.textContent = message;
+            statusDot.className = `status-dot ${type}`;
+        }
+
+        // Mostrar notificación
+        function showNotification(message, type) {
+            const notifications = document.getElementById('notifications');
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+                <span>${message}</span>
+            `;
+            
+            notifications.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 5000);
+        }
+
+        // Cerrar modal al hacer clic fuera
+        window.onclick = function(event) {
+            const modal = document.getElementById('addFaceModal');
+            if (event.target === modal) {
+                closeAddFaceModal();
+            }
+        }
+    </script>
+</body>
+</html>

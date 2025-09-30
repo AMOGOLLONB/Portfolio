@@ -1,158 +1,161 @@
-# Portafolio Personal - Jaime Andrés Mogollón Bastidas
+# Portafolio Profesional - Andrés Mogollón
 
-## 📋 Descripción
-
-Portafolio web profesional y moderno para un Ingeniero de Sistemas, desarrollado con tecnologías web puras (HTML5, CSS3 y JavaScript). El sitio presenta una interfaz elegante, responsive y fácil de navegar que destaca la experiencia profesional y proyectos del desarrollador.
+Un portafolio web moderno y profesional para Andrés Mogollón, Ingeniero de Sistemas especializado en bases de datos SQL, programación en Python, herramientas de Office e inteligencia artificial.
 
 ## 🚀 Características
 
-### ✨ Diseño y UX
-
-- **Diseño moderno y profesional** con paleta de colores atractiva
-- **Completamente responsive** - se adapta a todos los dispositivos
-- **Navegación suave** entre secciones
-- **Efectos visuales** y animaciones elegantes
-- **Tipografía moderna** usando Google Fonts (Poppins)
-
-### 🛠️ Funcionalidades
-
-- **Navegación fija** con menú hamburguesa para móviles
-- **Formulario de contacto** con validación completa
-- **Barras de habilidades animadas** que se activan al hacer scroll
-- **Efectos parallax** sutiles en la imagen de perfil
-- **Animaciones de entrada** para elementos al hacer scroll
-
-### 📱 Responsive Design
-
-- **Desktop**: Diseño de dos columnas optimizado
-- **Tablet**: Adaptación de grid y espaciado
-- **Mobile**: Diseño de una columna con menú hamburguesa
-
-## 🎨 Paleta de Colores
-
-- **Fondo principal**: `#f9f9f9`
-- **Texto**: `#222`
-- **Color primario**: `#0066ff` (azul)
-- **Color secundario**: `#ff6600` (naranja)
-- **Blanco**: `#ffffff`
-- **Grises**: `#f5f5f5`, `#666`
+- **Diseño Responsivo**: Optimizado para dispositivos móviles, tablets y desktop
+- **Navegación Suave**: Scroll suave entre secciones
+- **Formulario de Contacto**: Integrado con Formspree para envío de mensajes
+- **Validación en Tiempo Real**: Validación de campos del formulario
+- **Efectos Visuales**: Animaciones y transiciones modernas
+- **Chatbot Integrado**: Chatbase para atención al cliente
+- **SEO Optimizado**: Meta tags y estructura semántica
 
 ## 📁 Estructura del Proyecto
 
 ```
-portafolio/
+portafolio-andres-mogollon/
 ├── index.html          # Página principal
 ├── css/
-│   └── styles.css      # Estilos principales
+│   └── styles.css      # Estilos CSS
 ├── js/
-│   └── script.js       # Funcionalidad JavaScript
+│   └── script.js       # Funcionalidades JavaScript
 ├── img/
-│   ├── avatar.jpg      # Imagen de perfil
-│   ├── proyecto1.jpg   # Sistema de Inventario
-│   ├── proyecto2.jpg   # App de Tareas
-│   └── proyecto3.jpg   # Plataforma Educativa
-└── README.md           # Documentación
+│   └── README.md       # Guía de imágenes
+└── README.md           # Este archivo
 ```
 
-## 🏗️ Secciones del Portafolio
+## 🎨 Secciones del Portafolio
 
 ### 1. **Presentación (Hero)**
+- Nombre completo y profesión
+- Descripción profesional
+- Frase inspiradora de Charles Darwin
+- Avatar profesional
+- Botones de acción
 
-- Nombre completo y título profesional
-- Descripción personal
-- Imagen de perfil con efecto parallax
-- Botones de acción (Ver Proyectos, Contactar)
+### 2. **Experiencia y Habilidades**
+- Bases de datos SQL
+- Programación Python
+- Office Avanzado
+- Inteligencia Artificial
 
-### 2. **Experiencia Profesional**
+### 3. **Proyectos Destacados**
+- Sistema de reportes automatizados en Python
+- Chatbot para atención al cliente con IA
+- Dashboard de indicadores empresariales en Excel
 
-- **TecnoCloud S.A.S** - Desarrollador Full Stack (2022-2024)
-- **InnovaTech** - Analista de Sistemas (2020-2022)
-- **Universidad Central** - Monitor de Programación (2018-2019)
-
-### 3. **Habilidades Técnicas**
-
-- JavaScript (ES6+)
-- Python
-- HTML5 / CSS3
-- MySQL y PostgreSQL
-- Git & GitHub
-- Desarrollo de APIs
-- Seguridad Informática
-
-### 4. **Proyectos Destacados**
-
-- **Sistema de Inventario Web** - Gestión de stock y reportes
-- **App de Tareas Colaborativas** - Gestión de tareas en equipo
-- **Plataforma Educativa Virtual** - Sistema de aprendizaje en línea
-
-### 5. **Contacto**
-
+### 4. **Contacto**
 - Formulario de contacto con validación
-- Enlaces a redes sociales:
-  - LinkedIn: linkedin.com/in/jaimemogollon
-  - GitHub: github.com/jaimemogollon
-  - Twitter: twitter.com/jaime_codes
+- Enlaces a redes sociales
+- Información de contacto
 
-## 🚀 Cómo usar
+## 🛠️ Tecnologías Utilizadas
+
+- **HTML5**: Estructura semántica
+- **CSS3**: Estilos modernos con Flexbox y Grid
+- **JavaScript**: Funcionalidades interactivas
+- **Google Fonts**: Tipografía Poppins
+- **Font Awesome**: Iconos
+- **Formspree**: Manejo de formularios
+- **Chatbase**: Chatbot integrado
+
+## 🎯 Paleta de Colores
+
+- **Primario**: #0066ff (Azul)
+- **Secundario**: #ff6600 (Naranja)
+- **Acento**: #00cc88 (Verde)
+- **Texto Oscuro**: #222
+- **Texto Claro**: #666
+- **Fondo**: #f9f9f9
+
+## 📱 Características Responsive
+
+- **Desktop**: Layout de 2 columnas
+- **Tablet**: Layout adaptativo
+- **Móvil**: Layout de 1 columna con menú hamburguesa
+
+## 🚀 Cómo Usar
 
 1. **Clonar o descargar** el proyecto
-2. **Abrir** `index.html` en cualquier navegador web moderno
-3. **¡Listo!** El portafolio está funcionando
+2. **Agregar imágenes** en la carpeta `img/`:
+   - `avatar-profesional.jpg` (400x400px)
+   - `proyecto1.jpg` (400x200px)
+   - `proyecto2.jpg` (400x200px)
+   - `proyecto3.jpg` (400x200px)
+3. **Abrir** `index.html` en un navegador web
+4. **Personalizar** el contenido según necesidades
 
-### Para desarrollo:
+## 📧 Configuración del Formulario
 
-- Editar `index.html` para modificar contenido
-- Modificar `css/styles.css` para cambios de diseño
-- Actualizar `js/script.js` para nuevas funcionalidades
+El formulario está configurado para usar Formspree con el endpoint:
+```
+https://formspree.io/f/xqayawzz
+```
 
-## 🔧 Tecnologías Utilizadas
+Para usar tu propio endpoint:
+1. Crear cuenta en [Formspree](https://formspree.io)
+2. Crear un nuevo formulario
+3. Reemplazar la URL en `index.html` y `script.js`
 
-- **HTML5**: Estructura semántica y accesible
-- **CSS3**: Estilos modernos con Flexbox y Grid
-- **JavaScript ES6+**: Funcionalidad interactiva
-- **Google Fonts**: Tipografía Poppins
-- **SVG**: Imágenes vectoriales para placeholders
+## 🤖 Chatbot Chatbase
 
-## 📱 Compatibilidad
+El chatbot está integrado con el ID: `DlJsSU59gDbb88Y5HLia_`
 
-- ✅ Chrome 60+
-- ✅ Firefox 55+
-- ✅ Safari 12+
-- ✅ Edge 79+
-- ✅ Dispositivos móviles (iOS/Android)
+Para personalizar:
+1. Crear cuenta en [Chatbase](https://www.chatbase.co)
+2. Configurar tu chatbot
+3. Reemplazar el ID en el script de `index.html`
 
-## 🎯 Características Técnicas
+## ✨ Funcionalidades JavaScript
 
-### Performance
+- **Navegación móvil**: Menú hamburguesa
+- **Validación de formulario**: En tiempo real
+- **Animaciones**: Al hacer scroll
+- **Efectos hover**: En tarjetas y botones
+- **Modales**: Para proyectos
+- **Navegación suave**: Entre secciones
 
-- **Carga rápida** - Sin dependencias externas pesadas
-- **Optimizado** para SEO y accesibilidad
-- **Lazy loading** preparado para futuras implementaciones
+## 📝 Personalización
 
-### Accesibilidad
+### Cambiar Información Personal
+Editar en `index.html`:
+- Nombre y profesión
+- Descripción profesional
+- Información de contacto
+- Enlaces a redes sociales
 
-- **Navegación por teclado** completa
-- **Contraste de colores** optimizado
-- **Estructura semántica** HTML5
-- **Alt text** en todas las imágenes
+### Modificar Estilos
+Editar en `css/styles.css`:
+- Colores en las variables CSS
+- Tipografías
+- Espaciados
+- Efectos visuales
 
-### SEO
+### Ajustar Funcionalidades
+Editar en `js/script.js`:
+- Validaciones del formulario
+- Animaciones
+- Efectos interactivos
 
-- **Meta tags** optimizados
-- **Estructura semántica** HTML5
-- **Títulos jerárquicos** apropiados
+## 🌐 Despliegue
 
-## 📞 Contacto
+El portafolio es estático y puede desplegarse en:
+- **GitHub Pages**
+- **Netlify**
+- **Vercel**
+- **Firebase Hosting**
+- Cualquier servidor web estático
 
-**Jaime Andrés Mogollón Bastidas**
+## 📄 Licencia
 
-- 📧 Email: Disponible a través del formulario de contacto
-- 💼 LinkedIn: [linkedin.com/in/jaimemogollon](https://linkedin.com/in/jaimemogollon)
-- 🐙 GitHub: [github.com/jaimemogollon](https://github.com/jaimemogollon)
-- 🐦 Twitter: [twitter.com/jaime_codes](https://twitter.com/jaime_codes)
+© 2025 Andrés Mogollón – Todos los derechos reservados
+
+## 🤝 Contribuciones
+
+Este es un proyecto de portafolio personal. Para sugerencias o mejoras, contactar a través del formulario del sitio web.
 
 ---
 
-**© 2025 Jaime Andrés Mogollón Bastidas – Todos los derechos reservados**
-
-_Desarrollado con ❤️ usando HTML5, CSS3 y JavaScript puro_
+**Desarrollado con ❤️ para destacar en el mundo tecnológico**
