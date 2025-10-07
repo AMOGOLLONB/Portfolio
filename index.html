@@ -148,7 +148,27 @@
             </div>
         </div>
     </section>
+<div class="vapi-bottom-left">
+  <vapi-widget
+    assistant-id="d2cf37cd-b595-4b15-84f5-e8bb4a6eb16c"
+    public-key="74589dda-9680-4846-8875-149b5e480f86"
+  ></vapi-widget>
+</div>
 
+<script
+  src="https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js"
+  async
+  type="text/javascript"
+></script>
+
+<style>
+  .vapi-bottom-left {
+    position: fixed;
+    left: 16px;
+    bottom: 16px;
+    z-index: 9999;
+  }
+</style>
     <!-- Sección de Contacto -->
     <section id="contacto" class="section fade-in">
         <div class="container contact-container">
@@ -219,4 +239,5 @@
     <!-- Enlace al archivo JavaScript -->
     <script src="js/script.js"></script>
 </body>
+
 </html>
